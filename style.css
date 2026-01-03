@@ -70,3 +70,29 @@ body{
 .hide{
     display: none;
 }
+.msg-contd{
+      color: #ffffc7;
+    height: 100vmin;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4rem;
+
+}
+.msgc{
+    
+    font-size: 5vmin;
+}
+#reset{
+    
+     padding: 1rem;
+    font-size: 1.25rem;
+    background-color: #191913;
+    border-radius: 1rem;
+   color: beige;
+   border-radius: 1rem;
+}
+.hideg{
+    display: none;
+}

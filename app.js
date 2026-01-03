@@ -3,12 +3,16 @@ let resetbtn=document.querySelector("#reset-bn");
 let newgame=document.querySelector("#new-game");
 let msgcont=document.querySelector(".msg-cont");
 let msg=document.querySelector("#msg");
+let reset=document.querySelector("#reset");
+let msgcontd=document.querySelector(".msg-contd");
+let msgc=document.querySelector("#msgc");
 
 let turn0=true;
 const resetgame=()=>{
      turn0=true;
      enablebtn();
      msgcont.classList.add("hide");
+     msgcontd.classList.add("hideg")
 }
 const winpattern=[
     [0,1,2],
@@ -50,7 +54,12 @@ const showwinner=(winner)=>{
     msg.innerText=`congratulation, winner is ${winner}`;
     msgcont.classList.remove("hide");
 }
+const matchtied=()=>{
+    msgc.innerText=`match Tied`;
+    msgcontd.classList.remove("hideg")
+}
 const checkwinner=()=>{
+    let isWinner=false;
     for(pattern of winpattern){
          let pos1=boxes[pattern[0]].innerText;
             let pos2=boxes[pattern[1]].innerText;
@@ -58,12 +67,26 @@ const checkwinner=()=>{
 
         if(pos1!="" && pos2!="" && pos3!=""){
             if(pos1===pos2 && pos2===pos3){
-            
-            showwinner(pos1);
+              showwinner(pos1);
             disablebtn();
+            isWinner=true;
             }
+        }      
+  
+    }
+
+    let filledBoxes = 0;
+    boxes.forEach(box => {
+        if (box.innerText !== "") {
+            filledBoxes++;
         }
+    });
+
+    if (filledBoxes === 9 && !isWinner) {
+        matchtied();
     }
 };
+
 newgame.addEventListener("click",resetgame);
 resetbtn.addEventListener("click",resetgame);
+reset.addEventListener("click",resetgame);
